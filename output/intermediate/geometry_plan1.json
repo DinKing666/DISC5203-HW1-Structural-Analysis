@@ -1,0 +1,217 @@
+{
+  "source_config": "config\\plan1_geometry.json",
+  "gross_area_m2": 189.33,
+  "opening_area_m2": 9.2015,
+  "net_floor_area_m2": 180.1285,
+  "raster_cell_m": 0.02,
+  "raster_area_before_normalization_m2": 180.1772,
+  "area_closure_error_before_normalization_percent": 0.027036,
+  "elements": [
+    {
+      "id": "C1",
+      "point": [
+        0.2,
+        7.03
+      ],
+      "size_mm": "400x400",
+      "type": "Column"
+    },
+    {
+      "id": "C2",
+      "point": [
+        7.6,
+        7.03
+      ],
+      "size_mm": "400x400",
+      "type": "Column"
+    },
+    {
+      "id": "C3",
+      "point": [
+        10.7,
+        7.03
+      ],
+      "size_mm": "400x400",
+      "type": "Column"
+    },
+    {
+      "id": "C4",
+      "point": [
+        0.2,
+        12.47
+      ],
+      "size_mm": "400x400",
+      "type": "Column"
+    },
+    {
+      "id": "C5",
+      "point": [
+        10.7,
+        12.47
+      ],
+      "size_mm": "400x400",
+      "type": "Column"
+    },
+    {
+      "id": "C6",
+      "point": [
+        3.19,
+        16.7
+      ],
+      "size_mm": "400x400",
+      "type": "Column"
+    },
+    {
+      "id": "C7",
+      "point": [
+        7.6,
+        16.7
+      ],
+      "size_mm": "400x400",
+      "type": "Column"
+    },
+    {
+      "id": "T1",
+      "start": [
+        0.125,
+        1.0
+      ],
+      "end": [
+        0.125,
+        7.03
+      ],
+      "size_mm": "250x2000",
+      "type": "Wall"
+    },
+    {
+      "id": "T2",
+      "start": [
+        1.0,
+        1.0
+      ],
+      "end": [
+        3.19,
+        1.0
+      ],
+      "size_mm": "250x2000",
+      "type": "Wall"
+    },
+    {
+      "id": "T3",
+      "start": [
+        7.6,
+        1.0
+      ],
+      "end": [
+        9.9,
+        1.0
+      ],
+      "size_mm": "250x2000",
+      "type": "Wall"
+    },
+    {
+      "id": "T4",
+      "start": [
+        10.775,
+        1.0
+      ],
+      "end": [
+        10.775,
+        7.03
+      ],
+      "size_mm": "250x2000",
+      "type": "Wall"
+    },
+    {
+      "id": "T5",
+      "start": [
+        3.19,
+        7.03
+      ],
+      "end": [
+        7.6,
+        7.03
+      ],
+      "size_mm": "250x2600",
+      "type": "Wall"
+    },
+    {
+      "id": "T6",
+      "start": [
+        3.19,
+        10.34
+      ],
+      "end": [
+        3.19,
+        12.47
+      ],
+      "size_mm": "250x2000",
+      "type": "Wall"
+    },
+    {
+      "id": "T7",
+      "start": [
+        4.57,
+        9.11
+      ],
+      "end": [
+        4.57,
+        12.15
+      ],
+      "size_mm": "250x2850",
+      "type": "Wall"
+    },
+    {
+      "id": "T8",
+      "start": [
+        7.6,
+        9.11
+      ],
+      "end": [
+        7.6,
+        12.15
+      ],
+      "size_mm": "250x2850",
+      "type": "Wall"
+    },
+    {
+      "id": "T9",
+      "start": [
+        3.19,
+        12.47
+      ],
+      "end": [
+        8.15,
+        12.47
+      ],
+      "size_mm": "250x4500",
+      "type": "Wall"
+    },
+    {
+      "id": "T10",
+      "start": [
+        0.125,
+        14.77
+      ],
+      "end": [
+        0.125,
+        16.9
+      ],
+      "size_mm": "250x2000",
+      "type": "Wall"
+    },
+    {
+      "id": "T11",
+      "start": [
+        10.775,
+        14.77
+      ],
+      "end": [
+        10.775,
+        16.9
+      ],
+      "size_mm": "250x2000",
+      "type": "Wall"
+    }
+  ]
+}

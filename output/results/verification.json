@@ -1,0 +1,9 @@
+{
+  "net_area_m2": 180.12849999999997,
+  "sum_tributary_area_m2": 180.12849999999997,
+  "area_difference_m2": 0.0,
+  "dead_load_sum_kN": 675.4818750000001,
+  "dead_load_global_kN": 675.481875,
+  "live_load_sum_kN": 900.6425,
+  "live_load_global_kN": 900.6424999999999
+}
