@@ -1,0 +1,6 @@
+#!/usr/bin/env python
+import subprocess
+import sys
+
+raise SystemExit(subprocess.call([sys.executable, "scripts/verify_outputs.py"]))
+
