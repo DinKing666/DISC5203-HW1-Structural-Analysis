@@ -14,7 +14,7 @@ python scripts/verify_outputs.py
 
 Primary deliverables:
 
-- `report/HW1_report.md` - required Markdown report
+- `report/21345221_HW1_report.md` - required Markdown report
 - `output/pdf/HW1_report.pdf` - submission-ready PDF convenience copy
 - `output/results/element_loads.csv` - numerical results
 - `output/figures/` - extracted geometry, tributary-area, and load plots

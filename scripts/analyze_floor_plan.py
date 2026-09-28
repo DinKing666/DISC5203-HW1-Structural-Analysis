@@ -7,6 +7,8 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.colors import ListedColormap
+from matplotlib.lines import Line2D
+from matplotlib.patches import Patch
 from shapely import contains_xy
 from shapely.geometry import Polygon
 from shapely.ops import unary_union
@@ -29,13 +31,19 @@ def load_geometry():
     return cfg, slab, openings, net
 
 
-def segment_distance(x, y, start, end):
+def rectilinear_segment_distance(x, y, start, end):
+    """L1 distance to an axis-aligned finite support segment.
+
+    Equal-distance loci are piecewise straight. For perpendicular wall axes,
+    |dx| = |dy| gives the required 45-degree corner division.
+    """
     ax, ay = start
     bx, by = end
-    vx, vy = bx - ax, by - ay
-    denom = vx * vx + vy * vy
-    t = np.clip(((x - ax) * vx + (y - ay) * vy) / denom, 0.0, 1.0)
-    return np.hypot(x - (ax + t * vx), y - (ay + t * vy))
+    xmin, xmax = sorted((ax, bx))
+    ymin, ymax = sorted((ay, by))
+    dx = np.maximum.reduce((xmin - x, np.zeros_like(x), x - xmax))
+    dy = np.maximum.reduce((ymin - y, np.zeros_like(y), y - ymax))
+    return dx + dy
 
 
 def label_point(element):
@@ -69,9 +77,9 @@ def main():
     distances = []
     for e in elements:
         if e["type"] == "Column":
-            distances.append(np.hypot(px - e["point"][0], py - e["point"][1]))
+            distances.append(np.abs(px - e["point"][0]) + np.abs(py - e["point"][1]))
         else:
-            distances.append(segment_distance(px, py, e["start"], e["end"]))
+            distances.append(rectilinear_segment_distance(px, py, e["start"], e["end"]))
     owner = np.argmin(np.vstack(distances), axis=0)
     raster_areas = np.bincount(owner, minlength=len(elements)) * grid * grid
     # Normalize the minute boundary-cell discrepancy so that global equilibrium is exact.
@@ -119,6 +127,8 @@ def main():
         "opening_area_m2": round(openings.area, 6),
         "net_floor_area_m2": round(net.area, 6),
         "raster_cell_m": grid,
+        "partition_method": "Straight-line rectilinear (L1) mid-distance partition",
+        "corner_rule": "Perpendicular wall axes are divided by a 45-degree equal-distance line",
         "raster_area_before_normalization_m2": round(float(raster_areas.sum()), 6),
         "area_closure_error_before_normalization_percent": round(
             100 * (float(raster_areas.sum()) - net.area) / net.area, 6
@@ -165,7 +175,7 @@ def plot_geometry(cfg, gross, openings, net, elements):
             a, b = e["start"], e["end"]
             ax.plot([a[0], b[0]], [a[1], b[1]], color="#e07a5f", linewidth=5, solid_capstyle="round")
         x, y = label_point(e)
-        ax.text(x + 0.10, y + 0.10, e["id"], fontsize=8, weight="bold")
+        ax.text(x + 0.10, y + 0.10, e["id"], fontsize=8, weight="bold", zorder=10)
     ax.set_title("Digitized Floor Outline and Vertical Elements - Floor Plan 1", weight="bold")
     ax.set_xlabel("x (m)")
     ax.set_ylabel("y (m)")
@@ -180,20 +190,68 @@ def plot_geometry(cfg, gross, openings, net, elements):
 def plot_tributaries(cfg, gross, openings, elements, xx, yy, inside, owner):
     label_grid = np.full(xx.shape, np.nan)
     label_grid[inside] = owner
-    cmap = ListedColormap(plt.cm.tab20(np.linspace(0, 1, len(elements))))
-    fig, ax = plt.subplots(figsize=(8.2, 10.0), constrained_layout=True)
-    ax.pcolormesh(xx, yy, label_grid, cmap=cmap, shading="nearest", alpha=0.62)
-    draw_polygon(ax, openings, facecolor="white", edgecolor="#333", linewidth=1.2, hatch="//")
+    colors = plt.cm.tab20(np.linspace(0, 1, len(elements)))
+    colors[:, :3] = 0.68 * colors[:, :3] + 0.32
+    cmap = ListedColormap(colors)
+    fig, ax = plt.subplots(figsize=(8.8, 10.5), constrained_layout=True)
+    ax.pcolormesh(
+        xx, yy, label_grid, cmap=cmap, shading="nearest", alpha=0.72,
+        edgecolors="none", linewidth=0, antialiased=False, rasterized=True,
+    )
+
+    # Draw every influence-region perimeter as a continuous vector contour.
+    # Shared edges coincide exactly, producing one clean mid-span/45-degree line.
+    for idx in range(len(elements)):
+        region = np.where(inside, (label_grid == idx).astype(float), np.nan)
+        ax.contour(
+            xx, yy, region, levels=[0.5], colors="#246b91",
+            linewidths=0.9, linestyles="-", alpha=0.95,
+        )
+
+    # Support axes follow the assignment convention and remain visually distinct
+    # from the blue tributary boundaries.
+    for e in elements:
+        if e["type"] == "Wall":
+            a, b = e["start"], e["end"]
+            ax.plot([a[0], b[0]], [a[1], b[1]], color="#b43e3e", linewidth=1.25, zorder=5)
+        else:
+            x, y = e["point"]
+            ax.plot(x, y, marker="+", markersize=8, markeredgewidth=1.5,
+                    color="#263238", linestyle="None", zorder=6)
+
+    draw_polygon(ax, gross, facecolor="none", edgecolor="#263238", linewidth=1.5)
+    draw_polygon(ax, openings, facecolor="white", edgecolor="#263238", linewidth=1.5, hatch="//")
     for e in elements:
         x, y = label_point(e)
-        ax.text(x, y, e["id"], ha="center", va="center", fontsize=8, weight="bold",
-                bbox=dict(boxstyle="round,pad=0.18", facecolor="white", edgecolor="#333", alpha=0.9))
-    ax.set_title("Nearest-Support Tributary Area Partition", weight="bold")
+        ax.text(
+            x, y, e["id"], ha="center", va="center", fontsize=8.5,
+            weight="bold", color="#111111", zorder=10,
+            bbox=dict(
+                boxstyle="round,pad=0.20", facecolor="white",
+                edgecolor="#333333", linewidth=0.9, alpha=1.0,
+            ),
+        )
+    ax.set_title("Straight-Line Tributary Area Partition", weight="bold")
     ax.set_xlabel("x (m)")
     ax.set_ylabel("y (m)")
     ax.set_aspect("equal")
     ax.set_xlim(gross.bounds[0] - 0.3, gross.bounds[2] + 0.3)
     ax.set_ylim(gross.bounds[1] - 0.3, gross.bounds[3] + 0.3)
+    ax.legend(
+        handles=[
+            Line2D([0], [0], color="#b43e3e", lw=1.5, label="Support axis"),
+            Line2D([0], [0], color="#246b91", lw=1.2, ls="-",
+                   label="Mid-span / 45° boundary"),
+            Patch(facecolor="white", edgecolor="#263238", hatch="//", label="Opening (no load)"),
+        ],
+        loc="upper center", bbox_to_anchor=(0.5, -0.055), ncol=3,
+        frameon=False, fontsize=8,
+    )
+    ax.text(
+        0.5, -0.105,
+        "Boundaries terminate only at the slab perimeter or excluded openings.",
+        transform=ax.transAxes, ha="center", va="top", fontsize=8, color="#455a64",
+    )
     fig.savefig(FIG_DIR / "02_tributary_areas.png", dpi=220)
     plt.close(fig)
 

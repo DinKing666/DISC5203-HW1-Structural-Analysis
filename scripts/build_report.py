@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "report" / "HW1_report.md"
+OUT = ROOT / "report" / "21345221_HW1_report.md"
 
 
 def table(headers, rows):
@@ -42,15 +42,15 @@ def main():
 **Student:** Shuhan He  
 **Student ID:** 21345221  
 **Assigned input:** Floor Plan 1 (ID final digit = 1)  
-**Date:** 19 September 2026
+**Date:** 28 September 2026
 
 ## 1. Executive summary
 
-This report presents a reproducible extraction and gravity-load analysis of Floor Plan 1. The net slab area is **{geo['net_floor_area_m2']:.2f} m²** after excluding **{geo['opening_area_m2']:.2f} m²** of stair/core openings. Seven columns and eleven shear-wall elements were identified. A nearest-support partition, equivalent to a generalized Voronoi construction for both points and line segments, assigns every slab cell to exactly one vertical element. The one-floor gravity load is **{geo['net_floor_area_m2']*(qd+ql):.1f} kN** and the five-storey base total is **{5*geo['net_floor_area_m2']*(qd+ql):.1f} kN**.
+This report presents a reproducible extraction and gravity-load analysis of Floor Plan 1. The net slab area is **{geo['net_floor_area_m2']:.2f} m²** after excluding **{geo['opening_area_m2']:.2f} m²** of stair/core openings. Seven columns and eleven shear-wall elements were identified. A straight-line rectilinear mid-distance partition assigns every slab cell to exactly one vertical element while enforcing 45-degree divisions at perpendicular wall corners. The one-floor gravity load is **{geo['net_floor_area_m2']*(qd+ql):.1f} kN** and the five-storey base total is **{5*geo['net_floor_area_m2']*(qd+ql):.1f} kN**.
 
 ## 2. Input and interpretation
 
-The assignment PDF and `assets/FloorPlan1.png` were inspected visually. The printed dimensions were used to establish a metric coordinate system rather than inferring scale from image pixels. The origin is the lower-left principal wall-centreline intersection, with +x to the right and +y upward. Geometry is stored independently in `config/plan1_geometry.json` so that every interpreted coordinate can be reviewed or changed without editing the solver.
+The assignment PDF and `assets/FloorPlan1.png` were inspected visually. The printed dimensions were used to establish a metric coordinate system rather than inferring scale from image pixels. The origin is the lower-left outside corner of the overall floor envelope, with +x to the right and +y upward. Geometry is stored independently in `config/plan1_geometry.json` so that every interpreted coordinate can be reviewed or changed without editing the solver.
 
 The source is a structural floor-plan diagram rather than a machine-readable CAD model. Dimensions that are explicit in the image govern; where a wall endpoint or opening extent is visually indicated but not fully dimensioned, its centreline was digitized from adjacent dimension chains. These assumptions affect the local partition but do not change the global load equilibrium.
 
@@ -72,15 +72,17 @@ Key area values:
 
 ## 4. Tributary-area method
 
-The net slab is discretized into 0.02 m square cells. For each cell centre, the script calculates Euclidean distance to each column centre and the shortest perpendicular/end distance to each finite wall centreline. The cell is assigned to the closest support. This constructs midpoint boundaries automatically; at corners, equal-distance loci form the required 45-degree transitions. Exact numerical ties are resolved in stable ID order.
+The net slab is discretized into 0.02 m square cells. For each cell centre, the script calculates rectilinear (L1) distance to each column centre and finite wall centreline. The cell is assigned to the closest support. Unlike finite-segment Euclidean distance, which produces parabolic boundaries near segment ends, the rectilinear construction produces only horizontal, vertical, and diagonal straight segments. Parallel supports are divided at their mid-span line. At two perpendicular walls, equal offsets satisfy `|Δx| = |Δy|`, so the corner division is exactly 45 degrees. Exact numerical ties are resolved in stable ID order.
 
-For a point **p** and wall segment from **a** to **b**, the distance is
+For a point **p = (x,y)** and an axis-aligned segment with bounds `[x_min,x_max]` and `[y_min,y_max]`, the rectilinear distance is
 
-`t = clamp(((p-a)·(b-a)) / ||b-a||², 0, 1)` and `d = ||p - (a + t(b-a))||`.
+`d₁ = max(x_min-x, 0, x-x_max) + max(y_min-y, 0, y-y_max)`.
 
 The raster areas are normalized by the ratio of exact polygon area to counted cell area. This correction is only for boundary-cell discretization and preserves relative tributary shares. The pre-normalization area closure error is **{geo['area_closure_error_before_normalization_percent']:.4f}%**.
 
-![Computed tributary areas](../output/figures/02_tributary_areas.png)
+In the diagram, red solid lines mark support axes and blue solid lines mark the tributary boundaries. The blue boundaries are continuous within loaded slab regions. They terminate only at the exterior slab perimeter or at excluded stair/core openings, because a void carries no floor load.
+
+![Computed straight-line tributary areas](../output/figures/02_tributary_areas.png)
 
 ## 5. Load calculation
 
@@ -121,7 +123,7 @@ Coordinates are support points for columns and wall-segment midpoints for walls.
 ## 9. Limitations and defensibility
 
 - The drawing is a raster image, so some wall endpoints and opening limits require engineering interpretation. The digitized JSON makes those judgments auditable.
-- Nearest-distance partition is a geometric gravity-load idealization. A detailed slab analysis could redistribute load because of stiffness, span direction, openings and discontinuities.
+- The straight-line rectilinear partition follows the assignment's midpoint and 45-degree corner rules. A detailed slab analysis could redistribute load because of stiffness, span direction, openings and discontinuities.
 - Support self-weight and non-slab dead loads are intentionally excluded. Adding them requires explicit material and section data.
 - The algorithm generalizes to irregular outlines, holes, point columns and finite wall axes. A new input can be analyzed by replacing only the geometry configuration.
 

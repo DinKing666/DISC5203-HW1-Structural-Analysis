@@ -4,6 +4,8 @@
   "opening_area_m2": 9.2015,
   "net_floor_area_m2": 180.1285,
   "raster_cell_m": 0.02,
+  "partition_method": "Straight-line rectilinear (L1) mid-distance partition",
+  "corner_rule": "Perpendicular wall axes are divided by a 45-degree equal-distance line",
   "raster_area_before_normalization_m2": 180.1772,
   "area_closure_error_before_normalization_percent": 0.027036,
   "elements": [
