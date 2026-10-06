@@ -1,5 +1,0 @@
-beam,model,applied_load_kN,reaction_sum_kN,equilibrium_error_kN,max_sagging_kNm,max_hogging_kNm,max_abs_moment_kNm,max_downward_deflection_mm,largest_qL2_over_8_bound_kNm,largest_qL2_over_12_scale_kNm,bound_and_sign_verdict
-A,pure,174.305,174.305,6.630e-09,40.243,-49.039,49.039,0.7656,52.643,35.095,PASS
-A,subframe,174.305,174.305,5.500e-09,30.678,-46.096,46.096,0.5640,52.643,35.095,PASS
-B,pure,166.139,166.139,-3.677e-09,29.470,-33.191,33.191,0.2562,46.819,31.213,PASS
-B,subframe,166.139,166.139,-3.988e-09,28.566,-33.604,33.604,0.2870,46.819,31.213,PASS
