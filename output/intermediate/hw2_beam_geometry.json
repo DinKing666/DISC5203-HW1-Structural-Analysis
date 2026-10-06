@@ -1,0 +1,509 @@
+{
+  "beams": [
+    {
+      "id": "H0-1",
+      "orientation": "H",
+      "start": [
+        0.2,
+        1.0
+      ],
+      "end": [
+        3.19,
+        1.0
+      ],
+      "grid": "y=1.00 m, x-grid 0-1",
+      "panels": [
+        "P1",
+        "P10 (cantilever balcony where overlapping)"
+      ],
+      "length_m": 2.9899999999999998,
+      "load_shape": "two-way triangle/trapezoid + balcony cantilever UDL",
+      "support_class": "two loaded sides locally (main slab + balcony)"
+    },
+    {
+      "id": "H0-2",
+      "orientation": "H",
+      "start": [
+        3.19,
+        1.0
+      ],
+      "end": [
+        7.6,
+        1.0
+      ],
+      "grid": "y=1.00 m, x-grid 1-2",
+      "panels": [
+        "P2",
+        "P10 (cantilever balcony where overlapping)"
+      ],
+      "length_m": 4.41,
+      "load_shape": "two-way triangle/trapezoid + balcony cantilever UDL",
+      "support_class": "two loaded sides locally (main slab + balcony)"
+    },
+    {
+      "id": "H0-3",
+      "orientation": "H",
+      "start": [
+        7.6,
+        1.0
+      ],
+      "end": [
+        10.7,
+        1.0
+      ],
+      "grid": "y=1.00 m, x-grid 2-3",
+      "panels": [
+        "P3",
+        "P10 (cantilever balcony where overlapping)"
+      ],
+      "length_m": 3.0999999999999996,
+      "load_shape": "two-way triangle/trapezoid + balcony cantilever UDL",
+      "support_class": "two loaded sides locally (main slab + balcony)"
+    },
+    {
+      "id": "H1-1",
+      "orientation": "H",
+      "start": [
+        0.2,
+        7.03
+      ],
+      "end": [
+        3.19,
+        7.03
+      ],
+      "grid": "y=7.03 m, x-grid 0-1",
+      "panels": [
+        "P1",
+        "P4"
+      ],
+      "length_m": 2.9899999999999998,
+      "load_shape": "two-sided superposed triangle/trapezoid",
+      "support_class": "interior, slab on both sides"
+    },
+    {
+      "id": "H1-2",
+      "orientation": "H",
+      "start": [
+        3.19,
+        7.03
+      ],
+      "end": [
+        7.6,
+        7.03
+      ],
+      "grid": "y=7.03 m, x-grid 1-2",
+      "panels": [
+        "P2",
+        "P5"
+      ],
+      "length_m": 4.41,
+      "load_shape": "two-sided superposed triangle/trapezoid",
+      "support_class": "interior, slab on both sides"
+    },
+    {
+      "id": "H1-3",
+      "orientation": "H",
+      "start": [
+        7.6,
+        7.03
+      ],
+      "end": [
+        10.7,
+        7.03
+      ],
+      "grid": "y=7.03 m, x-grid 2-3",
+      "panels": [
+        "P3",
+        "P6"
+      ],
+      "length_m": 3.0999999999999996,
+      "load_shape": "two-sided superposed triangle/trapezoid",
+      "support_class": "interior, slab on both sides"
+    },
+    {
+      "id": "H2-1",
+      "orientation": "H",
+      "start": [
+        0.2,
+        12.47
+      ],
+      "end": [
+        3.19,
+        12.47
+      ],
+      "grid": "y=12.47 m, x-grid 0-1",
+      "panels": [
+        "P4",
+        "P7"
+      ],
+      "length_m": 2.9899999999999998,
+      "load_shape": "two-sided superposed triangle/trapezoid",
+      "support_class": "interior, slab on both sides"
+    },
+    {
+      "id": "H2-2",
+      "orientation": "H",
+      "start": [
+        3.19,
+        12.47
+      ],
+      "end": [
+        7.6,
+        12.47
+      ],
+      "grid": "y=12.47 m, x-grid 1-2",
+      "panels": [
+        "P5",
+        "P8"
+      ],
+      "length_m": 4.41,
+      "load_shape": "two-sided superposed triangle/trapezoid",
+      "support_class": "interior, slab on both sides"
+    },
+    {
+      "id": "H2-3",
+      "orientation": "H",
+      "start": [
+        7.6,
+        12.47
+      ],
+      "end": [
+        10.7,
+        12.47
+      ],
+      "grid": "y=12.47 m, x-grid 2-3",
+      "panels": [
+        "P6",
+        "P9"
+      ],
+      "length_m": 3.0999999999999996,
+      "load_shape": "two-sided superposed triangle/trapezoid",
+      "support_class": "interior, slab on both sides"
+    },
+    {
+      "id": "H3-1",
+      "orientation": "H",
+      "start": [
+        0.2,
+        16.7
+      ],
+      "end": [
+        3.19,
+        16.7
+      ],
+      "grid": "y=16.70 m, x-grid 0-1",
+      "panels": [
+        "P7",
+        "P11 (cantilever balcony where overlapping)"
+      ],
+      "length_m": 2.9899999999999998,
+      "load_shape": "two-way triangle/trapezoid + balcony cantilever UDL",
+      "support_class": "two loaded sides locally (main slab + balcony)"
+    },
+    {
+      "id": "H3-2",
+      "orientation": "H",
+      "start": [
+        3.19,
+        16.7
+      ],
+      "end": [
+        7.6,
+        16.7
+      ],
+      "grid": "y=16.70 m, x-grid 1-2",
+      "panels": [
+        "P8",
+        "P11 (cantilever balcony where overlapping)"
+      ],
+      "length_m": 4.41,
+      "load_shape": "two-way triangle/trapezoid + balcony cantilever UDL",
+      "support_class": "two loaded sides locally (main slab + balcony)"
+    },
+    {
+      "id": "H3-3",
+      "orientation": "H",
+      "start": [
+        7.6,
+        16.7
+      ],
+      "end": [
+        10.7,
+        16.7
+      ],
+      "grid": "y=16.70 m, x-grid 2-3",
+      "panels": [
+        "P9",
+        "P11 (cantilever balcony where overlapping)"
+      ],
+      "length_m": 3.0999999999999996,
+      "load_shape": "two-way triangle/trapezoid + balcony cantilever UDL",
+      "support_class": "two loaded sides locally (main slab + balcony)"
+    },
+    {
+      "id": "V0-1",
+      "orientation": "V",
+      "start": [
+        0.2,
+        1.0
+      ],
+      "end": [
+        0.2,
+        7.03
+      ],
+      "grid": "x=0.20 m, y-grid 0-1",
+      "panels": [
+        "P1"
+      ],
+      "length_m": 6.03,
+      "load_shape": "one-sided triangle/trapezoid",
+      "support_class": "perimeter, slab on one side"
+    },
+    {
+      "id": "V0-2",
+      "orientation": "V",
+      "start": [
+        0.2,
+        7.03
+      ],
+      "end": [
+        0.2,
+        12.47
+      ],
+      "grid": "x=0.20 m, y-grid 1-2",
+      "panels": [
+        "P4"
+      ],
+      "length_m": 5.44,
+      "load_shape": "one-sided triangle/trapezoid",
+      "support_class": "perimeter, slab on one side"
+    },
+    {
+      "id": "V0-3",
+      "orientation": "V",
+      "start": [
+        0.2,
+        12.47
+      ],
+      "end": [
+        0.2,
+        16.7
+      ],
+      "grid": "x=0.20 m, y-grid 2-3",
+      "panels": [
+        "P7"
+      ],
+      "length_m": 4.229999999999999,
+      "load_shape": "one-sided triangle/trapezoid",
+      "support_class": "perimeter, slab on one side"
+    },
+    {
+      "id": "V1-1",
+      "orientation": "V",
+      "start": [
+        3.19,
+        1.0
+      ],
+      "end": [
+        3.19,
+        7.03
+      ],
+      "grid": "x=3.19 m, y-grid 0-1",
+      "panels": [
+        "P1",
+        "P2"
+      ],
+      "length_m": 6.03,
+      "load_shape": "two-sided superposed triangle/trapezoid",
+      "support_class": "interior, slab on both sides"
+    },
+    {
+      "id": "V1-2",
+      "orientation": "V",
+      "start": [
+        3.19,
+        7.03
+      ],
+      "end": [
+        3.19,
+        12.47
+      ],
+      "grid": "x=3.19 m, y-grid 1-2",
+      "panels": [
+        "P4",
+        "P5"
+      ],
+      "length_m": 5.44,
+      "load_shape": "two-sided superposed triangle/trapezoid",
+      "support_class": "interior, slab on both sides"
+    },
+    {
+      "id": "V1-3",
+      "orientation": "V",
+      "start": [
+        3.19,
+        12.47
+      ],
+      "end": [
+        3.19,
+        16.7
+      ],
+      "grid": "x=3.19 m, y-grid 2-3",
+      "panels": [
+        "P7",
+        "P8"
+      ],
+      "length_m": 4.229999999999999,
+      "load_shape": "two-sided superposed triangle/trapezoid",
+      "support_class": "interior, slab on both sides"
+    },
+    {
+      "id": "V2-1",
+      "orientation": "V",
+      "start": [
+        7.6,
+        1.0
+      ],
+      "end": [
+        7.6,
+        7.03
+      ],
+      "grid": "x=7.60 m, y-grid 0-1",
+      "panels": [
+        "P2",
+        "P3"
+      ],
+      "length_m": 6.03,
+      "load_shape": "two-sided superposed triangle/trapezoid",
+      "support_class": "interior, slab on both sides"
+    },
+    {
+      "id": "V2-2",
+      "orientation": "V",
+      "start": [
+        7.6,
+        7.03
+      ],
+      "end": [
+        7.6,
+        12.47
+      ],
+      "grid": "x=7.60 m, y-grid 1-2",
+      "panels": [
+        "P5",
+        "P6"
+      ],
+      "length_m": 5.44,
+      "load_shape": "two-sided superposed triangle/trapezoid",
+      "support_class": "interior, slab on both sides"
+    },
+    {
+      "id": "V2-3",
+      "orientation": "V",
+      "start": [
+        7.6,
+        12.47
+      ],
+      "end": [
+        7.6,
+        16.7
+      ],
+      "grid": "x=7.60 m, y-grid 2-3",
+      "panels": [
+        "P8",
+        "P9"
+      ],
+      "length_m": 4.229999999999999,
+      "load_shape": "two-sided superposed triangle/trapezoid",
+      "support_class": "interior, slab on both sides"
+    },
+    {
+      "id": "V3-1",
+      "orientation": "V",
+      "start": [
+        10.7,
+        1.0
+      ],
+      "end": [
+        10.7,
+        7.03
+      ],
+      "grid": "x=10.70 m, y-grid 0-1",
+      "panels": [
+        "P3"
+      ],
+      "length_m": 6.03,
+      "load_shape": "one-sided triangle/trapezoid",
+      "support_class": "perimeter, slab on one side"
+    },
+    {
+      "id": "V3-2",
+      "orientation": "V",
+      "start": [
+        10.7,
+        7.03
+      ],
+      "end": [
+        10.7,
+        12.47
+      ],
+      "grid": "x=10.70 m, y-grid 1-2",
+      "panels": [
+        "P6"
+      ],
+      "length_m": 5.44,
+      "load_shape": "one-sided triangle/trapezoid",
+      "support_class": "perimeter, slab on one side"
+    },
+    {
+      "id": "V3-3",
+      "orientation": "V",
+      "start": [
+        10.7,
+        12.47
+      ],
+      "end": [
+        10.7,
+        16.7
+      ],
+      "grid": "x=10.70 m, y-grid 2-3",
+      "panels": [
+        "P9"
+      ],
+      "length_m": 4.229999999999999,
+      "load_shape": "one-sided triangle/trapezoid",
+      "support_class": "perimeter, slab on one side"
+    }
+  ],
+  "marked_beams": {
+    "A": {
+      "description": "Left vertical perimeter beam, one-sided slab support",
+      "segments": [
+        "V0-1",
+        "V0-2",
+        "V0-3"
+      ],
+      "support_grid_points": [
+        "G00",
+        "G01",
+        "G02",
+        "G03"
+      ]
+    },
+    "B": {
+      "description": "Horizontal beam on the C1-C2-C3 line, interior/two-sided slab support",
+      "segments": [
+        "H1-1",
+        "H1-2",
+        "H1-3"
+      ],
+      "support_grid_points": [
+        "G01",
+        "G11",
+        "G21",
+        "G31"
+      ]
+    }
+  },
+  "net_slab_area_m2": 180.12849999999997
+}
