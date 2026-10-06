@@ -3,5 +3,4 @@ matplotlib>=3.8
 shapely>=2.0
 Pillow>=10.0
 reportlab>=4.0
-openseespy>=3.8
 
