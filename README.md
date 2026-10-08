@@ -16,4 +16,4 @@ This is the single cumulative Git repository for **Shuhan He / 何抒翰**, stud
 - Later work reuses earlier accepted geometry and results through sibling homework folders; it does not duplicate or silently overwrite earlier submissions.
 - The root Git history, shared pre-commit hook, and this index cover the complete course sequence.
 
-The repository title should be **DISC5203-HW-Structural-Analysis** when it is renamed on GitHub.
+GitHub repository: **DISC5203-HW-Structural-Analysis**.
