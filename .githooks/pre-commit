@@ -2,5 +2,13 @@
 import subprocess
 import sys
 
-raise SystemExit(subprocess.call([sys.executable, "scripts/verify_outputs.py"]))
+checks = [
+    [sys.executable, "HW1/scripts/verify_outputs.py"],
+    [sys.executable, "HW2/scripts/verify_hw2_outputs.py"],
+]
+for check in checks:
+    result = subprocess.call(check)
+    if result:
+        raise SystemExit(result)
+raise SystemExit(0)
 

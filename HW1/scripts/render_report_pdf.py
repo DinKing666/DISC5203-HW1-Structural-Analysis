@@ -18,7 +18,7 @@ from reportlab.platypus import (
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "output" / "pdf" / "HW1_report.pdf"
+OUT = ROOT / "output" / "pdf" / "21345221-report-HW1.pdf"
 
 
 def register_fonts():
@@ -205,7 +205,7 @@ def main():
         P("9. Reproducible AI-agent workflow", "h1"),
         P("The agent read the source PDF and images, created a reviewable metric geometry model, implemented a deterministic partition and load calculation, generated plots and tables, and ran automated conservation checks. The repository contains the original inputs, geometry JSON, Python scripts, guidance files, a pre-commit verification hook, intermediate outputs, final results, and this report."),
         P("Reproduction command sequence", "h2"),
-        P("python -m pip install -r requirements.txt<br/>python scripts/analyze_floor_plan.py<br/>python scripts/build_report.py<br/>python scripts/render_report_pdf.py<br/>python scripts/verify_outputs.py"),
+        P("From the repository root: Set-Location HW1<br/>python -m pip install -r requirements-HW1.txt<br/>python scripts/analyze_floor_plan.py<br/>python scripts/build_report.py<br/>python scripts/render_report_pdf.py<br/>python scripts/verify_outputs.py"),
         P("10. Conclusion", "h1"),
         P(f"Floor Plan 1 has a modeled net loaded area of {net:.2f} m2. Under qD = {qd:.2f} kN/m2 and qL = {ql:.2f} kN/m2, it transfers {story_total:.1f} kN per typical floor and {5*story_total:.1f} kN at the base of the five-storey stack. The element schedule provides the corresponding tributary area and axial load for each identified column and wall."),
     ]

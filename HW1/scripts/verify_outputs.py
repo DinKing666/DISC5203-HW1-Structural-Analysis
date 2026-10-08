@@ -15,8 +15,8 @@ def require(path):
 
 def main():
     paths = [
-        ROOT / "report" / "21345221_HW1_report.md",
-        ROOT / "output" / "pdf" / "HW1_report.pdf",
+        ROOT / "report" / "21345221-report-HW1.md",
+        ROOT / "output" / "pdf" / "21345221-report-HW1.pdf",
         ROOT / "output" / "results" / "element_loads.csv",
         ROOT / "output" / "results" / "building_level_totals.csv",
         ROOT / "output" / "results" / "verification.json",

@@ -1,0 +1,9 @@
+beam_strip,grid_point,hw1_vertical_element,hw1_column_axial_kN_compression_negative,hw2_subframe_column_top_N_kN_compression_negative,percent_difference_magnitude,sign_check,interpretation
+A,G00,T1,-111.266,-24.952,-77.6,PASS,2D strip reaction versus HW1 whole-floor nearest-support estimate; gap measures omitted/redistributed orthogonal paths
+A,G01,C1,-32.699,-52.086,59.3,PASS,2D strip reaction versus HW1 whole-floor nearest-support estimate; gap measures omitted/redistributed orthogonal paths
+A,G02,C4,-42.360,-38.178,-9.9,PASS,2D strip reaction versus HW1 whole-floor nearest-support estimate; gap measures omitted/redistributed orthogonal paths
+A,G03,T10,-66.258,-15.029,-77.3,PASS,2D strip reaction versus HW1 whole-floor nearest-support estimate; gap measures omitted/redistributed orthogonal paths
+B,G01,C1,-32.699,-19.153,-41.4,PASS,2D strip reaction versus HW1 whole-floor nearest-support estimate; gap measures omitted/redistributed orthogonal paths
+B,G11,T5,-233.992,-73.199,-68.7,PASS,2D strip reaction versus HW1 whole-floor nearest-support estimate; gap measures omitted/redistributed orthogonal paths
+B,G21,C2,-36.226,-75.201,107.6,PASS,2D strip reaction versus HW1 whole-floor nearest-support estimate; gap measures omitted/redistributed orthogonal paths
+B,G31,C3,-27.321,-21.246,-22.2,PASS,2D strip reaction versus HW1 whole-floor nearest-support estimate; gap measures omitted/redistributed orthogonal paths

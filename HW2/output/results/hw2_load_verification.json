@@ -1,0 +1,10 @@
+{
+  "beam_count": 24,
+  "net_slab_area_m2": 180.12849999999997,
+  "sum_beam_tributary_area_m2_rounded_csv": 180.13,
+  "sum_beam_tributary_area_m2_exact": 180.12849999999995,
+  "global_dead_load_kN": 675.481875,
+  "global_live_load_kN": 900.6424999999999,
+  "beam_dead_load_kN": 675.48258,
+  "beam_live_load_kN": 900.63716
+}

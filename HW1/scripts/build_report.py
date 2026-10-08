@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "report" / "21345221_HW1_report.md"
+OUT = ROOT / "report" / "21345221-report-HW1.md"
 
 
 def table(headers, rows):
@@ -129,12 +129,13 @@ Coordinates are support points for columns and wall-segment midpoints for walls.
 
 ## 10. Reproducibility and AI-agent workflow
 
-The agent inspected the assignment PDF and all supplied images, translated visible dimensions into a reviewable geometry configuration, implemented the partition and load workflow, generated plots and tables, and ran deterministic verification checks. The Git repository includes source inputs, scripts, configuration, guidance (`CLAUDE.md`, `skills.md`), a pre-commit verification hook, intermediate geometry, results and this report.
+The agent inspected the assignment PDF and all supplied images, translated visible dimensions into a reviewable geometry configuration, implemented the partition and load workflow, generated plots and tables, and ran deterministic verification checks. The cumulative Git repository includes source inputs, scripts, configuration, guidance (`CLAUDE-HW1.md`, `skills-HW1.md`), a shared pre-commit verification hook, intermediate geometry, results and this report.
 
 To reproduce from the repository root:
 
 ```powershell
-python -m pip install -r requirements.txt
+Set-Location HW1
+python -m pip install -r requirements-HW1.txt
 python scripts/analyze_floor_plan.py
 python scripts/build_report.py
 python scripts/render_report_pdf.py

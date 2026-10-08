@@ -1,23 +1,19 @@
-# DISC 5203 Homework 1 - AI-Assisted Structural Analysis
+# DISC 5203 Homework - Structural Analysis
 
-This repository contains a reproducible tributary-area and gravity-load analysis for **Floor Plan 1** for Shuhan He, student ID **21345221**. The source assignment and images are preserved unchanged.
+This is the single cumulative Git repository for **Shuhan He / 何抒翰**, student ID **21345221**. Each homework extends the accepted state of the previous homework, while its files remain grouped and clearly labelled for review.
 
-## Quick start
+## Homework index
 
-```powershell
-python -m pip install -r requirements.txt
-python scripts/analyze_floor_plan.py
-python scripts/build_report.py
-python scripts/render_report_pdf.py
-python scripts/verify_outputs.py
-```
+| Homework | Scope | Main report | Reproduction guide |
+|---|---|---|---|
+| HW1 | Floor-plan digitisation, tributary areas and gravity loads | [`HW1/report/21345221-report-HW1.md`](HW1/report/21345221-report-HW1.md) | [`HW1/README-HW1.md`](HW1/README-HW1.md) |
+| HW2 | Slab-to-beam transfer, four OpenSees models and response checks | [`HW2/report/21345221-report-HW2.md`](HW2/report/21345221-report-HW2.md) | [`HW2/README-HW2.md`](HW2/README-HW2.md) |
 
-Primary deliverables:
+## Repository convention
 
-- `report/21345221_HW1_report.md` - required Markdown report
-- `output/pdf/HW1_report.pdf` - submission-ready PDF convenience copy
-- `output/results/element_loads.csv` - numerical results
-- `output/figures/` - extracted geometry, tributary-area, and load plots
-- `output/intermediate/geometry_plan1.json` - machine-readable digitization
+- `HW1/`, `HW2/`, and future `HWn/` folders preserve each assignment as a separately reviewable package.
+- Repeated document types use the suffix `-HW1`, `-HW2`, and so on.
+- Later work reuses earlier accepted geometry and results through sibling homework folders; it does not duplicate or silently overwrite earlier submissions.
+- The root Git history, shared pre-commit hook, and this index cover the complete course sequence.
 
-All coordinates use metres and a local Cartesian datum documented in the report. The analysis is deterministic; rerunning it overwrites generated outputs with the same results.
+The repository title should be **DISC5203-HW-Structural-Analysis** when it is renamed on GitHub.
